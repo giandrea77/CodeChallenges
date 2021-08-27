@@ -146,19 +146,76 @@ public class ProjectEuler {
     public static Long sumSquareDifference(Long number) {
 
         long sumOfSquareEach = (number * (number + 1) * (2 * number + 1)) / 6;
-        long sumOfEachAndSquare = (long)Math.pow( (number * (number + 1)) / 2, 2);
+        long sumOfEachAndSquare = (long) Math.pow( (number * (number + 1)) / 2, 2);
         return sumOfEachAndSquare - sumOfSquareEach;
 
     }
 
     /**
      * Project Euler #7: 10001st prime
+     * https://www.hackerrank.com/contests/projecteuler/challenges/euler007/problem
+     *
+     * Q: What is the Nth  prime number?
      *
      * @param number
      */
-    public static int prime10001th(int number) {
+    public static boolean isPrime(int number) {
 
-        return 0;
+        if ( number == 3 || number == 5 ) {
+            return true;
+        }
+
+        if ( number % 2 == 0 || number % 3 == 0 || number % 5 == 0 ) {
+            return false;
+        }
+
+        int sqrt = (int) Math.sqrt(number);
+        int index = 5;
+
+        while (index <= sqrt) {
+
+            // https://www.xarg.org/puzzle/project-euler/problem-7/
+            // What we also can do is unrolling checks of multiples of 2 and 3, which allows us to loop in a stepwidth of 6, which however requires a check of every
+            // i + 2 as well.
+            // However, it is also known that all primes except 2 and 3 have the form 6k + 1 or 6k - 1
+            // which allows us to go in steps of 6. An implementation can then look as follows:
+
+            if ( number % index == 0) {
+                return false;
+            }
+
+            if (number % (index + 2) == 0) {
+                return false;
+            }
+
+            index += 6;
+
+        }
+
+        return true;
+
+    }
+
+    public static int printNTHPrimeNumber(int number) {
+
+        int[] primes = new int[10000];
+        primes[0] = 2;
+
+        int counter = 0;
+        int next = 3;
+
+        while (counter < ( number - 1) ) {
+
+            if (isPrime(next)) {
+                counter++;
+                primes[counter] = next;
+            }
+
+            next = next + 2;
+
+        }
+
+        return primes[number - 1];
 
     }
 
@@ -180,7 +237,7 @@ public class ProjectEuler {
         // System.out.println(sumSquareDifference(3L));
 
         // Project Euler #7: 10001st prime
-        System.out.println(sumSquareDifference(3L));
+        System.out.println(printNTHPrimeNumber(5000));
 
     }
 
