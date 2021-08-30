@@ -1,7 +1,12 @@
 package it.ag.euler;
 
+import java.util.Vector;
+
 /**
  * https://www.hackerrank.com/contests/projecteuler/challenges
+ *
+ * @author Andrea Girardi
+ * @since Aug 24th, 2021
  */
 public class ProjectEuler {
 
@@ -219,6 +224,139 @@ public class ProjectEuler {
 
     }
 
+    /**
+     * Project Euler #8: Largest product in a series
+     * https://www.hackerrank.com/contests/projecteuler/challenges/euler008/problem
+     *
+     *
+     * @param number
+     */
+    public static int largeProductInASerie(String number, int size) {
+
+        int max = 0;
+
+        for (int index = 0; index < number.length() - size; index ++ ) {
+
+            int mult = 1;
+            char[] subString = number.substring(index, index + size).toCharArray();
+            for ( int innerIndex = 0; innerIndex < size; innerIndex++ ) {
+                int value = Integer.parseInt(Character.toString(subString[innerIndex]));
+                mult = mult * value;
+            }
+
+            if ( max < mult ) {
+                max = mult;
+            }
+
+        }
+
+        return max;
+
+    }
+
+    /**
+     * Project Euler #9: Special Pythagorean triplet
+     * https://www.hackerrank.com/contests/projecteuler/challenges/euler009/problem
+     *
+     *
+     * for _ in range(int(input())):
+     *     n = int(input())
+     *     m = -1
+     *     for a in range(3, (n//3)+1):
+     *         b = (n**2 - 2*a*n)//(2*n - 2*a)
+     *         c = n - b - a
+     *         if a**2 + b **2 == c**2:
+     *             if a*b*c > m:
+     *                 m = a*b*c
+     *     print(m)
+     *
+     * @param N
+     */
+    public static int specialPythagoreanTriplet(int N) {
+
+        int max = -1;
+        int pythagoreanTriplet = 0;
+
+        for ( int a = 3; a < (N / 3) + 1; a++ ) {
+
+            int b = ((N * N) - (2 * a * N)) / ( (2 * N) - (2 * a));
+            int c = N - b - a;
+
+            if ( ( a * a + b * b ) == c * c ) {
+                pythagoreanTriplet = a * b * c;
+                if ( pythagoreanTriplet > max ) {
+                    max = pythagoreanTriplet;
+                }
+            }
+
+        }
+
+        return max;
+
+    }
+
+    /**
+     * Project Euler #10: Summation of primes
+     * https://www.hackerrank.com/contests/projecteuler/challenges/euler010/problem
+     *
+     *
+     *
+     * @param number
+     */
+    public static long summationOfPrimes(int number) {
+
+        // Initialize the array
+        // Create a boolean array "prime[0..n]" and initialize
+        // all entries it as true. A value in prime[i] will
+        // finally be false if i is Not a prime, else true.
+        boolean[] primes = new boolean[10000000 + 1];
+
+        for ( int index = 2; index <= 10000000; index++ ) {
+            primes[index] = true;
+        }
+
+        for ( int index = 2; index * index <= 10000000; index++ ) {
+
+            // If prime[p] is not changed, then it is a prime
+            if ( primes[index] ) {
+
+                // Update all multiples of p
+                for ( int innerIndex = index * 2; innerIndex <= 10000000; innerIndex += index) {
+                    primes[innerIndex] = false;
+                }
+
+            }
+
+        }
+
+        long sum = 0;
+        // long[] sumPrimes = new long[1000000 + 1];
+
+        for ( int index = 2; index <= number; index++ ) {
+
+            if ( primes[index]) {
+                sum += index;
+            }
+            // sumPrimes[index] = sum;
+
+        }
+
+        return sum;
+
+    }
+
+    /**
+     * Project Euler #11: Largest product in a grid
+     * https://www.hackerrank.com/contests/projecteuler/challenges/euler011/problem
+     *
+     * @param grid
+     */
+    public static long largestProductInAGrid(int[][] grid) {
+
+        return 0;
+
+    }
+
     public static void main(String[] args) {
 
         // Project Euler #3: Largest prime factor
@@ -237,7 +375,15 @@ public class ProjectEuler {
         // System.out.println(sumSquareDifference(3L));
 
         // Project Euler #7: 10001st prime
-        System.out.println(printNTHPrimeNumber(5000));
+        // System.out.println(printNTHPrimeNumber(5000));
+
+        // Project Euler #8: Largest product in a series
+        // System.out.println(largeProductInASerie("3675356291", 5));
+
+        // Project Euler #9: Special Pythagorean triplet
+        // System.out.println(specialPythagoreanTriplet(12));
+
+        System.out.println(summationOfPrimes(100));
 
     }
 
