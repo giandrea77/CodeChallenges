@@ -1,5 +1,9 @@
 package it.ag.euler;
 
+import io.jmll.core.JmllConstants;
+import io.jmll.core.JmllCore;
+import io.jmll.core.types.JmllCoreInteger;
+
 import java.util.Vector;
 
 /**
@@ -349,12 +353,60 @@ public class ProjectEuler {
      * Project Euler #11: Largest product in a grid
      * https://www.hackerrank.com/contests/projecteuler/challenges/euler011/problem
      *
+     * Q: What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20 X 20 grid?
+     *
      * @param grid
      */
-    public static long largestProductInAGrid(int[][] grid) {
+    public static long largestProductInAGrid(Integer[][] grid) {
 
+        int max = 0;
+
+        for (int y = 0; y < 20; y++ ) {
+
+            for ( int x = 0; x < 20; x++ ) {
+
+                int currentMult = 0;
+
+                // mult horiz
+                if ( x <= 16 ) {
+                    currentMult = grid[x][y] * grid[x+1][y] * grid[x+2][y] * grid[x+3][y];
+                    max = max < currentMult ? currentMult : max;
+                }
+
+                // mult vert
+                if ( y <= 16 ) {
+                    currentMult = grid[x][y] * grid[x][y+1] * grid[x][y+2] * grid[x][y+3];
+                    max = max < currentMult ? currentMult : max;
+                }
+
+                // mult diag LtoR
+                if ( x <= 16 && y <= 16 ) {
+                    currentMult = grid[x][y] * grid[x+1][y+1] * grid[x+2][y+2] * grid[x+3][y+3];
+                    max = max < currentMult ? currentMult : max;
+                }
+
+                // mult diag RtoL
+                if ( x >= 3 && y <= 16 ) {
+                    currentMult = grid[x][y] * grid[x-1][y+1] * grid[x-2][y+2] * grid[x-3][y+3];
+                    max = max < currentMult ? currentMult : max;
+                }
+
+            }
+
+        }
+
+        return max;
+
+    }
+
+    /**
+     * Project Euler #12: Highly divisible triangular number
+     * https://www.hackerrank.com/contests/projecteuler/challenges/euler012/problem
+     *
+     * @param
+     */
+    public static int highlyDivisibleTriangularNumber() {
         return 0;
-
     }
 
     public static void main(String[] args) {
@@ -383,7 +435,13 @@ public class ProjectEuler {
         // Project Euler #9: Special Pythagorean triplet
         // System.out.println(specialPythagoreanTriplet(12));
 
-        System.out.println(summationOfPrimes(100));
+        // System.out.println(summationOfPrimes(100));
+
+        // Project Euler #11: Largest product in a grid
+        JmllCore<Integer> jmllCore = new JmllCoreInteger();
+        Integer[][] matrixMinMax = jmllCore.generateMatrix(20,20, JmllConstants.Sign.NEUTRAL, 1, 50);
+        System.out.println("matrixMinMax: " + largestProductInAGrid(matrixMinMax));
+
 
     }
 

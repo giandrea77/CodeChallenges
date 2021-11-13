@@ -8,6 +8,18 @@
     <artifactId>HackerRank</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <!--
+            Number generator (matrices and arrays)
+            Link: https://github.com/giandrea77/jmll
+        -->
+        <dependency>
+            <groupId>io.jmll</groupId>
+            <artifactId>jmll</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
