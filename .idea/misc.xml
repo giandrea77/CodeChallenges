@@ -3,8 +3,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/HackerRank/pom.xml" />
         <option value="$PROJECT_DIR$/CodeSnippets/pom.xml" />
+        <option value="$PROJECT_DIR$/HackerRank/pom.xml" />
+        <option value="$PROJECT_DIR$/HarckerHearth/pom.xml" />
       </list>
     </option>
   </component>

@@ -270,4 +270,190 @@ public class Runner {
 
     }
 
+    public static boolean SearchingChallenge(String str) {
+
+        String longestPalindrome = new String();
+
+        char array[] = str.toCharArray();
+        int arrayLength = str.length() - 1;
+
+        for ( int index = 0; index < arrayLength; index++ ) {
+
+            if ( array[index] != array[arrayLength - index] ) {
+                return false;
+            }
+
+        }
+
+        return true;
+
+    }
+
+    public static String subStrings(String str) {
+
+        String longestPalindrome = "";
+
+        for (int index = 0; index < str.length(); index++) {
+            for (int innerIndex = index + 1; innerIndex <= str.length(); innerIndex++) {
+
+                String workingString = str.substring(index, innerIndex);
+                if (SearchingChallenge(workingString) && workingString.length() > longestPalindrome.length()) {
+                    longestPalindrome = workingString;
+                }
+            }
+        }
+
+        if (longestPalindrome.length() < 3) {
+            longestPalindrome = "none";
+        }
+
+        return longestPalindrome;
+    }
+
+    public static String StringChallenge(String str) {
+
+        String[] strings = str.split("\\s+");
+
+        char[] pattern = strings[0].toCharArray();
+        char[] input = strings[1].toCharArray();
+        long stringLength = strings[1].length();
+        long patterLenght = strings[0].length();
+
+        // Pattern index
+        int innerIndex = 0;
+        char previousChar = ' ';
+
+        for ( int index = 0; index < stringLength - 1; index++ ) {
+
+            if ( pattern[innerIndex] == '+' ) {
+
+                if ( !(input[index] >= 'a' && input[index] <= 'z') && !( input[index] >= 'A' && input[index] <= 'Z')) {
+                    return "false";
+                }
+
+                innerIndex++;
+
+            } else if ( pattern[innerIndex] == '$' ) {
+
+                if ( !(input[index] >= '0' && input[index] <= '9') ) {
+                    return "false";
+                }
+
+                innerIndex++;
+
+            } else if ( innerIndex < patterLenght - 1  && pattern[innerIndex] == '*' && pattern[innerIndex + 1] == '{') {
+
+                if ( stringLength >= index + 2 ) {
+
+                    if (stringLength >= index + 2) {
+
+                        boolean stop = false;
+                        previousChar = input[index];
+                        int counter = 0;
+
+                        while (!stop) {
+
+                            if ( index < stringLength && ( (input[index] >= 'a' && input[index] <= 'z') || (input[index] >= 'A' && input[index] <= 'Z') ) ) {
+
+                                if (previousChar == input[index]) {
+                                    index++;
+                                    counter++;
+
+                                } else {
+
+                                    if ( counter == pattern[innerIndex + 2] ) {
+                                        stop = true;
+                                    } else {
+                                        return "false";
+                                    }
+                                }
+
+                            } else {
+
+                                if ( counter == Integer.valueOf(String.valueOf(pattern[innerIndex + 2])) ) {
+                                    stop = true;
+                                } else {
+                                    return "false";
+                                }
+                            }
+
+                        }
+
+                        innerIndex = innerIndex + 3;
+
+                    } else {
+                        return "false";
+                    }
+
+                }
+
+            } else if ( pattern[innerIndex] == '*') {
+
+                if ( stringLength >= index + 2 ) {
+
+                    boolean stop = false;
+                    previousChar = input[index];
+                    int counter = 0;
+
+                    while (!stop) {
+
+                        if ( index <= stringLength - 1 && ( (input[index] >= 'a' && input[index] <= 'z') || ( input[index] >= 'A' && input[index] <= 'Z') ) ) {
+
+                            if ( previousChar == input[index]) {
+                                index++;
+                                counter++;
+
+                                if ( counter > 3 ) {
+                                    return "false";
+                                }
+
+                            } else {
+
+                                if ( counter == 3 ) {
+                                    index--;
+                                    stop = true;
+                                } else {
+                                    return "false";
+                                }
+                            }
+
+                        } else {
+
+                            if ( counter == 3 ) {
+                                stop = true;
+                            } else {
+                                return "false";
+                            }
+                        }
+
+                    }
+
+                } else {
+                    return "false";
+                }
+
+                innerIndex++;
+
+            } else {
+                return "false";
+            }
+
+        }
+
+        return "true";
+
+    }
+
+    /**
+     * Test runner
+     * @param args
+     */
+    public static void main(String[] args) {
+
+        System.out.print(StringChallenge("+++++* abcdehhhhhh"));
+
+    }
+
+    //
+
 }
