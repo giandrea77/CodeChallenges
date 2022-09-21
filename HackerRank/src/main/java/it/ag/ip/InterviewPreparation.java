@@ -22,7 +22,6 @@ class Node {
 /**
  * https://www.hackerrank.com/interview/interview-preparation-kit
  */
-
 public class InterviewPreparation {
 
     /* Sock merchant */

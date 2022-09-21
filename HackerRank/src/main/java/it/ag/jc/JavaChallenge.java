@@ -1,9 +1,17 @@
 package it.ag.jc;
 
+import java.math.BigDecimal;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * @author Andrea
@@ -104,16 +112,80 @@ public class JavaChallenge {
 
     }
 
+    /**
+     * https://www.hackerrank.com/challenges/java-bigdecimal/problem?isFullScreen=true
+     */
+    public static void javaBigDecimal(String[] set) {
+
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = scanner.next();
+        }
+        scanner.close();
+        Arrays.sort(s, Collections.reverseOrder(Comparator.comparing(BigDecimal::new)));
+        for (int i = 0; i < n; i++) {
+            System.out.println(s[i]);
+        }
+
+    }
 
 
-    public static void main(String[] args)  {
+    /**
+     * https://www.hackerrank.com/challenges/java-md5/problem
+     */
+    public static void md5() throws NoSuchAlgorithmException {
+
+        Scanner scan = new Scanner(System.in);
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(scan.nextLine().getBytes());
+        System.out.print(DatatypeConverter.printHexBinary(md.digest()).toLowerCase());
+        scan.close();
+
+    }
+
+    /**
+     * https://www.hackerrank.com/challenges/sha-256/problem?h_r=next-challenge&h_v=zen
+     */
+    public static void sha256() throws NoSuchAlgorithmException {
+
+        Scanner scan = new Scanner(System.in);
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        digest.update(scan.nextLine().getBytes());
+        System.out.print(DatatypeConverter.printHexBinary(digest.digest()).toLowerCase());
+        scan.close();
+    }
+
+
+
+
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
         // System.out.println(findDay(10, 9, 2019));
         // System.out.println(isPrime("12312873127836127833"));
-        System.out.println(usernameValidator("aaaaaaa"));
+        // System.out.println(usernameValidator("aaaaaaa"));
 
         // tagContentExtractor("<h1><h1>Sanjay has no watch</h1></h1><par>So wait for a while</par>");
 
+        // md5();
+        // sha256();
+
+
     }
+
+
+
+
+    /**
+     * Input
+
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] array = new int[n];
+
+     */
+
+
 
 }

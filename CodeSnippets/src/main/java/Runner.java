@@ -469,7 +469,6 @@ public class Runner {
      * NOTE: this is a 100% score
      */
     public static int solution(int[] A) {
-        // write your code in Java SE 8
 
         java.util.Arrays.sort(A);
 
@@ -500,6 +499,28 @@ public class Runner {
 
     }
 
+    public static String solution2(String S) {
+        // write your code in Java SE
+
+        char[] array = S.toCharArray();
+
+        java.util.Set<Character> res = new java.util.HashSet<>();
+
+        for ( int index = 0; index < S.length(); index++ ) {
+            char c = array[index];
+
+            if ( res.contains(c) ) {
+                return String.valueOf(c);
+            } else {
+                res.add(c);
+            }
+
+        }
+
+        return String.valueOf('\0');
+
+    }
+
     /**
      * Test runner
      * @param args
@@ -507,7 +528,8 @@ public class Runner {
     public static void main(String[] args) {
 
         // System.out.print(StringChallenge("+++++* abcdehhhhhh"));
-        System.out.println(solution(new int[] {1, 3, 6, 4, 1, 2}));
+        // System.out.println(solution(new int[] {1, 3, 6, 4, 1, 2}));
+        // System.out.println(solution2(15958));
 
     }
 

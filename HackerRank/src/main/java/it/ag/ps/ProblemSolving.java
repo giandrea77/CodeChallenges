@@ -436,15 +436,60 @@ public class ProblemSolving {
     }
 
     /**
-     *
+     * https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem?isFullScreen=true
      *
      * @param llist
      * @param data
      * @return
      */
     static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data) {
+        SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+        newNode.next = llist;
+        return newNode;
+    }
+
+    /**
+     * https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem?isFullScreen=true&h_r=next-challenge&h_v=zen
+     *
+     * SinglyLinkedListNode {
+     *  int data;
+     *  SinglyLinkedListNode next;
+     * }
+     *
+     * @param llist
+     * @param data
+     * @param position
+     * @return
+     */
+    public static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode llist, int data, int position) {
+        // Write your code here
+
+        SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+
+        // Append at the head of the list
+        if ( position == 0 ) {
+            newNode.next = llist;
+            return newNode;
+        }
+
+        SinglyLinkedListNode newList = llist;
+        for ( int index = 1; index < position; index ++ ) {
+            newList = newList.next;
+        }
+
+        newNode.next = newList.next;
+        newList.next = newNode;
+
+        return llist;
+
+    }
+
+
+    public static SinglyLinkedListNode deleteNode(SinglyLinkedListNode llist, int position) {
+        // Write your code here
         return null;
     }
+
 
     public static void main(String[] args) {
 
@@ -478,6 +523,17 @@ public class ProblemSolving {
 
         // singlyLinkedListNode.next = nextSinglyLinkedListNode;
         // printLinkedList(singlyLinkedListNode);
+
+        // https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem?isFullScreen=true&h_r=next-challenge&h_v=zen
+        SinglyLinkedListNode singlyLinkedListNode1 = new SinglyLinkedListNode(16);
+        SinglyLinkedListNode singlyLinkedListNode2 = new SinglyLinkedListNode(13);
+        SinglyLinkedListNode singlyLinkedListNode3 = new SinglyLinkedListNode(7);
+
+        singlyLinkedListNode1.next = singlyLinkedListNode2;
+        singlyLinkedListNode2.next = singlyLinkedListNode3;
+
+        printLinkedList(insertNodeAtPosition(singlyLinkedListNode1, 1, 2));
+
 
     }
 

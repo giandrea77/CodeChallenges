@@ -9,12 +9,8 @@
         <module name="HackerRank" />
         <module name="CodeSnippets" />
         <module name="HarckerHearth" />
+        <module name="LeetCode" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CodeSnippets" target="11" />
-      <module name="HackerRank" target="11" />
-      <module name="HarckerHearth" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
