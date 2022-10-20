@@ -4,6 +4,8 @@ import io.jmll.core.JmllConstants;
 import io.jmll.core.JmllCore;
 import io.jmll.core.types.JmllCoreInteger;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -405,11 +407,41 @@ public class ProjectEuler {
      *
      * @param
      */
-    public static int highlyDivisibleTriangularNumber() {
+    public static int highlyDivisibleTriangularNumber(int number) {
+
+        int index = 1;
+
+        while (index <= 1000) {
+
+            int sum = index * ( index + 1 )/ 2 ;
+            int divisors = 0;
+            for ( int innerIndex = 1; innerIndex <= sum; innerIndex++ ) {
+
+                if ( sum % innerIndex == 0 ) {
+                    divisors++;
+                    if ( divisors > number ) {
+                        return sum;
+                    }
+
+                }
+            }
+
+            index++;
+
+        }
+
         return 0;
+
     }
 
     public static void main(String[] args) {
+
+//        Scanner in = new Scanner(System.in);
+//        int t = in.nextInt();
+//        for(int a0 = 0; a0 < t; a0++){
+//            int n = in.nextInt();
+//        }
+
 
         // Project Euler #3: Largest prime factor
         // System.out.println("getLargestPrimeFactor(17): " + getLargestPrimeFactor(44, 2));
@@ -438,9 +470,15 @@ public class ProjectEuler {
         // System.out.println(summationOfPrimes(100));
 
         // Project Euler #11: Largest product in a grid
-        JmllCore<Integer> jmllCore = new JmllCoreInteger();
-        Integer[][] matrixMinMax = jmllCore.generateMatrix(20,20, JmllConstants.Sign.NEUTRAL, 1, 50);
-        System.out.println("matrixMinMax: " + largestProductInAGrid(matrixMinMax));
+//        JmllCore<Integer> jmllCore = new JmllCoreInteger();
+//        Integer[][] matrixMinMax = jmllCore.generateMatrix(20,20, JmllConstants.Sign.NEUTRAL, 1, 50);
+//        System.out.println("matrixMinMax: " + largestProductInAGrid(matrixMinMax));
+
+        //
+        // System.out.println(highlyDivisibleTriangularNumber(1));
+        // System.out.println(highlyDivisibleTriangularNumber(2));
+        // System.out.println(highlyDivisibleTriangularNumber(3));
+        System.out.println(highlyDivisibleTriangularNumber(4));
 
 
     }

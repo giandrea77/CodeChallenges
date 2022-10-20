@@ -109,18 +109,67 @@ public class GreedyAlgorithms {
 	 *  1. INTEGER k
 	 *  2. 2D_INTEGER_ARRAY contests
 	 */
-//	public static int luckBalance(int k, List<List<Integer>> contests) {
-//		// Write your code here
-//
-//	}
+	public static int luckBalance(int k, List<List<Integer>> contests) {
 
+		List<Integer> important = new ArrayList<>();
+		int luck = 0;
 
+		for ( Integer index = 0; index < contests.size(); index++ ) {
+
+			if ( contests.get(index).get(1) == 1 ) {
+				important.add(contests.get(index).get(0));
+			} else {
+				luck += contests.get(index).get(0);
+			}
+
+		}
+
+		// k could be bigger than contests size, cases 6,7 and 8
+		if ( k > important.size() ) {
+			k = important.size();
+		}
+
+		Collections.sort(important, Collections.reverseOrder());
+		for ( Integer index = 0; index < k; index++ ) {
+			luck += important.get(index);
+		}
+
+		for ( Integer index = k; index < important.size(); index++ ) {
+			luck -= important.get(index);
+		}
+
+		return luck;
+
+	}
+
+	/*
+	 * Complete the 'maximumPerimeterTriangle' function below.
+	 * https://www.hackerrank.com/challenges/maximum-perimeter-triangle/problem?isFullScreen=true&h_r=next-challenge&h_v=zen
+	 *
+	 * The function is expected to return an INTEGER_ARRAY.
+	 * The function accepts INTEGER_ARRAY sticks as parameter.
+	 */
+
+	public static List<Integer> maximumPerimeterTriangle(List<Integer> sticks) {
+		// Write your code here
+		return null;
+	}
 
 	public static void main(String[] args) {
 
 		// System.out.println(minimumAbsoluteDifference(Arrays.asList(new Integer[] {3, -7, 0})));
 		// System.out.println(marcsCakewalk(Arrays.asList(new Integer[] {1, 3, 2})));
 		// System.out.println(gridChallenge(Arrays.asList(new String[] {"iv", "sm"})));
+
+		System.out.println(luckBalance(3, Arrays.asList(
+				Arrays.asList(new Integer[] {5, 1}),
+				Arrays.asList(new Integer[] {2, 1}),
+				Arrays.asList(new Integer[] {1, 1}),
+				Arrays.asList(new Integer[] {8, 1}),
+				Arrays.asList(new Integer[] {10, 0}),
+				Arrays.asList(new Integer[] {5, 0})
+		)));
+
 	}
 
 }

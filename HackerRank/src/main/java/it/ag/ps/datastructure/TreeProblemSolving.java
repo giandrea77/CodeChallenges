@@ -1,4 +1,4 @@
-package it.ag.ps;
+package it.ag.ps.datastructure;
 
 import java.util.ArrayList;
 import java.util.Arrays;
