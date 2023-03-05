@@ -11,11 +11,13 @@
         <module name="WhiteHatTest" />
         <module name="restTest" />
         <module name="HarckerHearth" />
-        <module name="demo" />
-        <module name="demo1" />
         <module name="LeetCode" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo" target="17" />
+      <module name="demo1" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
