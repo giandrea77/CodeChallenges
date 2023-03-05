@@ -80,7 +80,6 @@ public class Board {
     public boolean isFirstMovePlayer1() {
         return firstMovePlayer1;
     }
-
     public void setFirstMovePlayer1(boolean firstMovePlayer1) {
         this.firstMovePlayer1 = firstMovePlayer1;
     }

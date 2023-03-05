@@ -1,5 +1,6 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -530,6 +531,13 @@ public class Runner {
         // System.out.print(StringChallenge("+++++* abcdehhhhhh"));
         // System.out.println(solution(new int[] {1, 3, 6, 4, 1, 2}));
         // System.out.println(solution2(15958));
+
+        String email = "Solon.MIAS@ec.europa.eu,Silvia.DONATO@ec.europa.eu";
+        List<String> arrOfStr = Arrays.asList(email.split(",")) ;
+
+        System.out.println(arrOfStr.size());
+
+
 
     }
 
