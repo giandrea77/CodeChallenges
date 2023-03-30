@@ -1,8 +1,10 @@
 package it.ag.jc;
 
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,7 +43,6 @@ public class JavaChallenge {
      * https://www.hackerrank.com/challenges/java-primality-test/problem
      */
     public static String isPrime(String number) {
-
         return new java.math.BigInteger(number).isProbablePrime(100) ? "prime" : "not prime";
     }
 
@@ -157,8 +158,32 @@ public class JavaChallenge {
         scan.close();
     }
 
+    /**
+     * https://www.hackerrank.com/challenges/simple-addition-varargs/problem?isFullScreen=true
+     */
+    public static void printSum() {
+       Add add = new Add();
+       System.out.println(add.add(1,2,3));
+    }
 
+    /**
+     * https://www.hackerrank.com/challenges/java-reflection-attributes/problem
+     */
+    public static void javaReflection() {
 
+        Class add = Add.class;
+        Method[] methods = add.getDeclaredMethods();
+
+        ArrayList<String> methodList = new ArrayList<>();
+        for ( Method method : methods){
+            methodList.add(method.getName());
+        }
+        Collections.sort(methodList);
+        for(String name: methodList){
+            System.out.println(name);
+        }
+
+    }
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
 
@@ -171,6 +196,9 @@ public class JavaChallenge {
         // md5();
         // sha256();
 
+        // printSum();
+
+        javaReflection();
 
     }
 

@@ -5,7 +5,9 @@ import io.jmll.core.JmllCore;
 import io.jmll.core.types.JmllCoreInteger;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 /**
@@ -401,29 +403,33 @@ public class ProjectEuler {
 
     }
 
-    /**
-     * Project Euler #12: Highly divisible triangular number
-     * https://www.hackerrank.com/contests/projecteuler/challenges/euler012/problem
-     *
-     * @param
-     */
+
+    private static Integer getAllFactorsVer(int n) {
+        Set<Integer> factors = new HashSet<>();
+        int step = n % 2 == 0 ? 1 : 2;
+        for (int i = 1; i <= Math.sqrt(n); i += step) {
+            if (n % i == 0) {
+                factors.add(i);
+                factors.add(n / i);
+            }
+        }
+        return factors.size();
+    }
+
     public static int highlyDivisibleTriangularNumber(int number) {
+
+        if ( number == 1) {
+            return 3;
+        }
 
         int index = 1;
 
         while (index <= 1000) {
 
-            int sum = index * ( index + 1 )/ 2 ;
-            int divisors = 0;
-            for ( int innerIndex = 1; innerIndex <= sum; innerIndex++ ) {
-
-                if ( sum % innerIndex == 0 ) {
-                    divisors++;
-                    if ( divisors > number ) {
-                        return sum;
-                    }
-
-                }
+            // Triangle number calculation
+            int triangleNumber = index * ( index + 1 )/ 2 ;
+            if ( getAllFactorsVer(triangleNumber) > number ) {
+                return triangleNumber;
             }
 
             index++;
@@ -478,7 +484,7 @@ public class ProjectEuler {
         // System.out.println(highlyDivisibleTriangularNumber(1));
         // System.out.println(highlyDivisibleTriangularNumber(2));
         // System.out.println(highlyDivisibleTriangularNumber(3));
-        System.out.println(highlyDivisibleTriangularNumber(4));
+        System.out.println(highlyDivisibleTriangularNumber(8));
 
 
     }

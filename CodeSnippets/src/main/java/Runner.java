@@ -537,7 +537,7 @@ public class Runner {
 
         System.out.println(arrOfStr.size());
 
-
+        System.out.println();
 
     }
 
