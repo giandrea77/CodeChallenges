@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/CodeSnippets/jaggad" />
+    <file type="web" url="file://$PROJECT_DIR$/JaggadTest" />
     <file type="web" url="file://$PROJECT_DIR$/sampletwo" />
   </component>
   <component name="MavenProjectsManager">
@@ -12,8 +14,17 @@
         <option value="$PROJECT_DIR$/HarckerHearth/pom.xml" />
         <option value="$PROJECT_DIR$/LeetCode/pom.xml" />
         <option value="$PROJECT_DIR$/WhiteHatTest/pom.xml" />
+        <option value="$PROJECT_DIR$/TechnicalTasks/TechnicalTasks/pom.xml" />
+        <option value="$PROJECT_DIR$/Interviews/pom.xml" />
+        <option value="$PROJECT_DIR$/Interviews/Jaggad/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/TechnicalTasks/TechnicalTasks/pom.xml" />
+      </set>
+    </option>
+    <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
